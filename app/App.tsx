@@ -1,7 +1,5 @@
 import { registerRootComponent } from 'expo';
 import LeaguesOverview from './leagues_overview/LeaguesOverview';
-import { SafeAreaView } from 'react-native';
-import { sharedStyles } from './styles/SharedStyles';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LeagueDetail from './league_detail/LeagueDetail';
@@ -16,7 +14,6 @@ export default function App() {
 
   return (
     <NavigationContainer>
-        <SafeAreaView style={sharedStyles.safeAreaView}>
             <Stack.Navigator
             screenOptions={{
                 headerTitle: '',
@@ -33,7 +30,6 @@ export default function App() {
                     name='LeagueDetail'
                     component={LeagueDetail} />
             </Stack.Navigator>
-        </SafeAreaView>
     </NavigationContainer>
   );
 }

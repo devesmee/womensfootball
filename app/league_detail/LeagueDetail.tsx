@@ -6,6 +6,9 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import axios from 'axios';
 import { API_BASE_URL, API_KEY_HEADER, LEAGUES_PATH } from '../constants/Constants';
 import LoadingSpinner from '../reusable_components/LoadingSpinner';
+import LeagueHeader from './LeagueHeader';
+import { leagueDetailStyles } from '../styles/LeagueDetailStyles';
+import SeasonsList from './SeasonsList';
 
 type Props = NativeStackScreenProps<
 RootStackParamList,
@@ -50,11 +53,14 @@ export default function LeagueDetail({ route, navigation }: Props) {
             setHasError(true);
         }
     }
-
     return (
-      <View style={sharedStyles.container}>
+      <View style={leagueDetailStyles.container}>
         {isLoading && <LoadingSpinner/>}
-        {leagueDetail !== undefined && <Text style={sharedStyles.defaultText}>{leagueDetail.country.name}</Text>}
+        {leagueDetail !== undefined && (
+        <View>
+            <LeagueHeader name={leagueDetail.league.name} logo={leagueDetail.league.logo} />
+            <SeasonsList seasons={leagueDetail.seasons} />
+            </View>) }
         {hasError && <Text style={sharedStyles.defaultText}>Something went wrong, please try again later</Text>}
       </View>
     );

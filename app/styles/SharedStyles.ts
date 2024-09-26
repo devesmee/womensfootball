@@ -1,10 +1,6 @@
 import { StyleSheet } from "react-native";
 
 export const sharedStyles = StyleSheet.create({
-    safeAreaView: {
-        flex: 1,
-        backgroundColor: '#190D3B',
-    },
     container: {
       flex: 1,
       backgroundColor: '#190D3B',
@@ -24,6 +20,6 @@ export const sharedStyles = StyleSheet.create({
         color: '#FFFFFF'
     },
     flatList: {
-        gap: 20,
+        gap: 20
     }
 });
