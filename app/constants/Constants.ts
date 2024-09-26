@@ -5,7 +5,4 @@ export const LEAGUES_PATH = 'leagues';
 
 // API key
 export const API_KEY_HEADER = 'x-apisports-key';
-
-// Vrouwen Eredivisie league ID
-export const LEAGUE_ID = '91';
   

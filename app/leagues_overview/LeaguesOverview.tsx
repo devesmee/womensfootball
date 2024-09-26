@@ -1,18 +1,24 @@
-import { ActivityIndicator, FlatList, Text, View } from 'react-native';
+import { FlatList, Text, TouchableWithoutFeedback, View } from 'react-native';
 import { useEffect, useState } from "react";
 import { sharedStyles } from '../styles/SharedStyles';
-import LeaguesOverviewHeader from './LeaguesOverviewHeader';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../App';
+import LoadingSpinner from '../reusable_components/LoadingSpinner';
+
+type Props = NativeStackScreenProps<
+RootStackParamList,
+'LeaguesOverview'>;
 
 // TODO: refactor this to using an interactive map with pins on every country that has an available women's football league
-export default function LeaguesOverview() {
+export default function LeaguesOverview({ navigation }: Props) {
     const [isLoading, setIsLoading] = useState(false);
     const [leagues, setLeagues] = useState<League[]>();
 
     useEffect(() => {
-        fetchSeasons();
+        fetchLeagues();
     }, [])
 
-    const fetchSeasons = async () => {
+    const fetchLeagues = async () => {
         setIsLoading(true);
 
         const leaguesHardcoded: League[]= require('../../assets/Leagues.json');
@@ -22,14 +28,24 @@ export default function LeaguesOverview() {
 
     return (
       <View style={sharedStyles.container}>
-        {isLoading && <ActivityIndicator style={sharedStyles.loadingSpinner}/>}
-        <LeaguesOverviewHeader />
+        {isLoading && <LoadingSpinner/>}
         {leagues !== undefined && <FlatList
         contentContainerStyle={sharedStyles.flatList}
         data={leagues}
-        renderItem={({item}) => (<Text style={sharedStyles.defaultText}>{item.name}</Text>)}
+        renderItem={({item}) => (
+            <TouchableWithoutFeedback
+                onPress={() => goToLeagueDetail(item.name)}
+            >
+                <Text style={sharedStyles.defaultText}>{item.name}</Text>
+            </TouchableWithoutFeedback>
+        )
+    }
         keyExtractor={league => league.name}
       />}
       </View>
     );
+
+    function goToLeagueDetail(name: string) {
+        navigation.navigate('LeagueDetail', { leagueName: name });
+    }
   }
