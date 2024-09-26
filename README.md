@@ -7,5 +7,8 @@ Before you'll be able to run the app, you need to sign up to [API Football](http
 
 Now you should be able to do API calls using this app.
 
+## Leagues
+This app only includes the women's football leagues that are available on [API Football](https://www.api-football.com/).
+
 ## ⚠️ Disclaimer ⚠️
 I am in no way affliated with any of the teams included in this app. This app was built purely for personal purposes and to gain more experience building apps with React Native. I do not own any of the images and all credit goes to their respective owners.

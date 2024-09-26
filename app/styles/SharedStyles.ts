@@ -3,15 +3,17 @@ import { StyleSheet } from "react-native";
 export const sharedStyles = StyleSheet.create({
     safeAreaView: {
         flex: 1,
-        backgroundColor: '#2E1B58',
+        backgroundColor: '#190D3B',
     },
     container: {
-      backgroundColor: '#2E1B58',
+      flex: 1,
+      backgroundColor: '#190D3B',
       alignItems: 'center',
       justifyContent: 'center',
+      paddingHorizontal: 20
     },
     loadingSpinner: {
-        backgroundColor: '#73EDD8'
+        backgroundColor: '#FFFFFF'
     },
     defaultText: {
         fontSize: 16,
@@ -20,5 +22,8 @@ export const sharedStyles = StyleSheet.create({
     titleText: {
         fontSize: 26,
         color: '#FFFFFF'
+    },
+    flatList: {
+        gap: 20,
     }
 });
