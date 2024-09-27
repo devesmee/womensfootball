@@ -4,8 +4,8 @@
   "main": "app/App.tsx",
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "web": "expo start --web",
     "lint": "npx eslint --fix"
   },
@@ -16,7 +16,11 @@
     "axios": "^1.7.7",
     "expo": "~51.0.34",
     "react": "18.2.0",
-    "react-native": "0.74.5"
+    "react-native": "0.74.5",
+    "react-native-leaflet-view": "^0.1.2",
+    "react-native-safe-area-context": "^4.11.0",
+    "react-native-screens": "^3.34.0",
+    "react-native-webview": "^13.12.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

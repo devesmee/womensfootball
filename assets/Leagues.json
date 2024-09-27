@@ -1,118 +1,234 @@
 [
     {
         "name": "A-League Women",
-        "country": "Australia"
+        "country": "Australia",
+        "position": {
+            "lat": -24.7761086,
+            "lng": 134.755
+        }
     },
     {
         "name": "WE League",
-        "country": "Japan"
+        "country": "Japan",
+        "position": {
+            "lat": 36.5748441,
+            "lng": 139.2394179
+        }
     },
     {
         "name": "WK League",
-        "country": "Korea"
+        "country": "South Korea",
+        "position": {
+            "lat": 36.638392,
+            "lng": 127.6961188
+        }
     },
     {
         "name": "Liga MX Femenil",
-        "country": "Mexico"
+        "country": "Mexico",
+        "position": {
+            "lat": 23.6585116,
+            "lng": -102.0077097
+        }
     },
     {
         "name": "NWSL",
-        "country": "USA"
+        "country": "USA",
+        "position": {
+            "lat": 39.7837304,
+            "lng": -100.445882
+        }
     },
     {
         "name": "Brasileiro Women",
-        "country": "Brazil"
+        "country": "Brazil",
+        "position": {
+            "lat": -10.3333333,
+            "lng": -53.2
+        }
     },
     {
         "name": "Liga Femenina",
-        "country": "Colombia"
+        "country": "Colombia",
+        "position": {
+            "lat": 4.099917,
+            "lng": -72.9088133
+        }
     },
     {
         "name": "Frauenliga",
-        "country": "Austria"
+        "country": "Austria",
+        "position": {
+            "lat": 47.59397,
+            "lng": 14.12456
+        }
     },
     {
         "name": "Super League Women",
-        "country": "Belgium"
+        "country": "Belgium",
+        "position": {
+            "lat": 50.6402809,
+            "lng": 4.6667145
+        }
     },
     {
         "name": "1. Liga Women",
-        "country": "Czech-Republic"
+        "country": "Czech-Republic",
+        "position": {
+            "lat": 49.7439047,
+            "lng": 15.3381061
+        }
     },
     {
         "name": "Kvindeliga",
-        "country": "Denmark"
+        "country": "Denmark",
+        "position": {
+            "lat": 55.670249,
+            "lng": 10.3333283
+        }
     },
     {
         "name": "FA WSL",
-        "country": "England"
+        "country": "England",
+        "position": {
+            "lat": 52.5310214,
+            "lng": -1.2649062
+        }
     },
     {
         "name": "Meistriliiga",
-        "country": "Estonia"
+        "country": "Estonia",
+        "position": {
+            "lat": 58.7523778,
+            "lng": 25.3319078
+        }
     },
     {
         "name": "Kansallinen Liiga",
-        "country": "Finland"
+        "country": "Finland",
+        "position": {
+            "lat": 63.2467777,
+            "lng": 25.9209164
+        }
     },
     {
         "name": "Feminine Division 1",
-        "country": "France"
+        "country": "France",
+        "position": {
+            "lat": 46.603354,
+            "lng": 1.8883335
+        }
     },
     {
         "name": "Frauen Bundesliga",
-        "country": "Germany"
+        "country": "Germany",
+        "position": {
+            "lat": 51.1638175,
+            "lng": 10.4478313
+        }
     },
     {
         "name": "Úrvalsdeild Women",
-        "country": "Iceland"
+        "country": "Iceland",
+        "position": {
+            "lat": 64.9841821,
+            "lng": -18.1059013
+        }
     },
     {
         "name": "Serie A Women",
-        "country": "Italy"
+        "country": "Italy",
+        "position": {
+            "lat": 42.6384261,
+            "lng": 12.674297
+        }
     },
     {
         "name": "Eredivisie Women",
-        "country": "Netherlands"
+        "country": "Netherlands",
+        "position": {
+            "lat": 52.2434979,
+            "lng": 5.6343227
+        }
     },
     {
         "name": "Premiership Women",
-        "country": "Northern-Ireland"
+        "country": "Northern-Ireland",
+        "position": {
+            "lat": 54.5859836,
+            "lng": -6.9591554
+        }
     },
     {
         "name": "1. Division Women",
-        "country": "Norway"
+        "country": "Norway",
+        "position": {
+            "lat": 61.1529386,
+            "lng": 8.7876653
+        }
     },
     {
         "name": "Ekstraliga Women",
-        "country": "Poland"
+        "country": "Poland",
+        "position": {
+            "lat": 52.215933,
+            "lng": 19.134422
+        }
     },
     {
         "name": "1a Divisão - Women",
-        "country": "Portugal"
+        "country": "Portugal",
+        "position": {
+            "lat": 39.6621648,
+            "lng": -8.1353519
+        }
     },
     {
         "name": "Liga 1 Feminin",
-        "country": "Romania"
+        "country": "Romania",
+        "position": {
+            "lat": 45.9852129,
+            "lng": 24.6859225
+        }
     },
     {
         "name": "Supreme Division Women",
-        "country": "Russia"
+        "country": "Russia",
+        "position": {
+            "lat": 64.6863136,
+            "lng": 97.7453061
+        }
     },
     {
         "name": "I Liga - Women",
-        "country": "Slovakia"
+        "country": "Slovakia",
+        "position": {
+            "lat": 48.7411522,
+            "lng": 19.4528646
+        }
     },
     {
         "name": "Primera División Femenina",
-        "country": "Spain"
+        "country": "Spain",
+        "position": {
+            "lat": 39.3260685,
+            "lng": -4.8379791
+        }
     },
     {
         "name": "Damallsvenskan",
-        "country": "Sweden"
+        "country": "Sweden",
+        "position": {
+            "lat": 59.6749712,
+            "lng": 14.5208584
+        }
     },
     {
         "name": "AXA Women’s Super League",
-        "country": "Switzerland"
+        "country": "Switzerland",
+        "position": {
+            "lat": 46.7985624,
+            "lng": 8.2319736
+        }
     }
 ]

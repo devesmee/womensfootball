@@ -1,16 +1,18 @@
-import { FlatList, Text, TouchableWithoutFeedback, View } from 'react-native';
 import { useEffect, useState } from 'react';
-import { sharedStyles } from '../styles/SharedStyles';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../App';
-import LoadingSpinner from '../reusable_components/LoadingSpinner';
 import { League } from '../models';
+import {
+  LeafletView,
+  MapMarker,
+  WebViewLeafletEvents,
+  WebviewLeafletMessage,
+} from 'react-native-leaflet-view';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'LeaguesOverview'>;
 
 // TODO: refactor this to using an interactive map with pins on every country that has an available women's football league
 export default function LeaguesOverview({ navigation }: Props) {
-  const [isLoading, setIsLoading] = useState(false);
   const [leagues, setLeagues] = useState<League[]>();
 
   useEffect(() => {
@@ -18,34 +20,36 @@ export default function LeaguesOverview({ navigation }: Props) {
   }, []);
 
   const fetchLeagues = async () => {
-    setIsLoading(true);
-
     /* eslint-disable @typescript-eslint/no-require-imports */
     const leaguesHardcoded: League[] = require('../../assets/Leagues.json');
     /* eslint-enable @typescript-eslint/no-require-imports */
-    setIsLoading(false);
     setLeagues(leaguesHardcoded);
   };
 
   return (
-    <View style={sharedStyles.container}>
-      {isLoading && <LoadingSpinner />}
-      {leagues !== undefined && (
-        <FlatList
-          contentContainerStyle={sharedStyles.flatList}
-          data={leagues}
-          renderItem={({ item }) => (
-            <TouchableWithoutFeedback
-              onPress={() => goToLeagueDetail(item.name)}
-            >
-              <Text style={sharedStyles.defaultText}>{item.name}</Text>
-            </TouchableWithoutFeedback>
-          )}
-          keyExtractor={(league) => league.name}
-        />
-      )}
-    </View>
+    <LeafletView
+      zoom={2}
+      mapMarkers={getMapMarkers()}
+      onMessageReceived={onMapMessageReceived}
+    />
   );
+
+  function getMapMarkers(): MapMarker[] {
+    const mapMarkers: MapMarker[] =
+      leagues?.map((league) => ({
+        id: league.name,
+        position: league.position,
+        icon: '⚽️',
+      })) ?? [];
+
+    return mapMarkers;
+  }
+
+  function onMapMessageReceived(message: WebviewLeafletMessage) {
+    if (message.event === WebViewLeafletEvents.ON_MAP_MARKER_CLICKED) {
+      goToLeagueDetail(message.payload?.mapMarkerID ?? '');
+    }
+  }
 
   function goToLeagueDetail(name: string) {
     navigation.navigate('LeagueDetail', { leagueName: name });
