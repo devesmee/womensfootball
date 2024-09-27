@@ -72,7 +72,9 @@ export default function LeagueDetail({ route, navigation }: Props) {
           <LeagueHeader
             name={leagueDetail.league.name}
             logo={leagueDetail.league.logo}
+            country={leagueDetail.country.name}
           />
+          <Text style={leagueDetailStyles.headingText}>Seasons</Text>
           <SeasonsList
             seasons={leagueDetail.seasons}
             onSeasonClicked={goToSeasonOverview}

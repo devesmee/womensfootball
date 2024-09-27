@@ -5,24 +5,17 @@ import { leagueDetailStyles } from '../styles/LeagueDetailStyles';
 interface Props {
   name: string;
   logo: string;
+  country: string;
 }
 
-export default function LeagueHeader({ name, logo }: Props) {
+export default function LeagueHeader({ name, logo, country }: Props) {
   return (
-    <View>
-      <View style={leagueDetailStyles.headerImageContainer}>
-        <Image
-          style={leagueDetailStyles.headerImage}
-          /* eslint-disable @typescript-eslint/no-require-imports */
-          source={require('../../assets/header.jpg')}
-          /* eslint-enable @typescript-eslint/no-require-imports */
-        />
-      </View>
-      <View style={leagueDetailStyles.headerContentContainer}>
-        <View style={leagueDetailStyles.headerContentBackground} />
+    <View style={leagueDetailStyles.headerRow}>
         <Image style={leagueDetailStyles.logo} source={{ uri: logo }} />
-        <Text style={sharedStyles.defaultTitle}>{name}</Text>
-      </View>
+        <View style={leagueDetailStyles.headerColumn}>
+          <Text style={sharedStyles.defaultTitle}>{name}</Text>
+          <Text style={sharedStyles.defaultText}>{country}</Text>
+        </View>
     </View>
   );
 }
