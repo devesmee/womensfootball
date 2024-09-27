@@ -6,4 +6,3 @@ export const STANDINGS_PATH = 'standings';
 
 // API key
 export const API_KEY_HEADER = 'x-apisports-key';
-  

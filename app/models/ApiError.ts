@@ -1,3 +1,3 @@
-interface ApiError {
-    field: string;
+export interface ApiError {
+  field: string;
 }

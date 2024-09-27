@@ -1,3 +1,5 @@
-interface Standing {
-    league: LeagueStanding;
+import { LeagueStanding } from './LeagueStanding';
+
+export interface Standing {
+  league: LeagueStanding;
 }

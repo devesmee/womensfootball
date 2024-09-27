@@ -1,5 +1,5 @@
-interface League {
-    id: number;
-    name: string;
-    logo: string;
+export interface League {
+  id: number;
+  name: string;
+  logo: string;
 }
