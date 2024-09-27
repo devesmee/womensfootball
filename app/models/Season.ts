@@ -1,6 +1,5 @@
-interface Season {
-    year: number;
-    start: string;
-    end: string;
-    current: boolean;
+export interface Season {
+  year: number;
+  start: string;
+  end: string;
 }

@@ -9,6 +9,12 @@
     "splash": {
       "image": "./assets/logo.png",
       "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "bundleIdentifier": "com.devesmee.WomensFootball"
+    },
+    "android": {
+      "package": "com.devesmee.WomensFootball"
     }
   }
 }

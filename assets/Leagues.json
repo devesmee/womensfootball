@@ -1,0 +1,118 @@
+[
+    {
+        "name": "A-League Women",
+        "country": "Australia"
+    },
+    {
+        "name": "WE League",
+        "country": "Japan"
+    },
+    {
+        "name": "WK League",
+        "country": "Korea"
+    },
+    {
+        "name": "Liga MX Femenil",
+        "country": "Mexico"
+    },
+    {
+        "name": "NWSL",
+        "country": "USA"
+    },
+    {
+        "name": "Brasileiro Women",
+        "country": "Brazil"
+    },
+    {
+        "name": "Liga Femenina",
+        "country": "Colombia"
+    },
+    {
+        "name": "Frauenliga",
+        "country": "Austria"
+    },
+    {
+        "name": "Super League Women",
+        "country": "Belgium"
+    },
+    {
+        "name": "1. Liga Women",
+        "country": "Czech-Republic"
+    },
+    {
+        "name": "Kvindeliga",
+        "country": "Denmark"
+    },
+    {
+        "name": "FA WSL",
+        "country": "England"
+    },
+    {
+        "name": "Meistriliiga",
+        "country": "Estonia"
+    },
+    {
+        "name": "Kansallinen Liiga",
+        "country": "Finland"
+    },
+    {
+        "name": "Feminine Division 1",
+        "country": "France"
+    },
+    {
+        "name": "Frauen Bundesliga",
+        "country": "Germany"
+    },
+    {
+        "name": "Úrvalsdeild Women",
+        "country": "Iceland"
+    },
+    {
+        "name": "Serie A Women",
+        "country": "Italy"
+    },
+    {
+        "name": "Eredivisie Women",
+        "country": "Netherlands"
+    },
+    {
+        "name": "Premiership Women",
+        "country": "Northern-Ireland"
+    },
+    {
+        "name": "1. Division Women",
+        "country": "Norway"
+    },
+    {
+        "name": "Ekstraliga Women",
+        "country": "Poland"
+    },
+    {
+        "name": "1a Divisão - Women",
+        "country": "Portugal"
+    },
+    {
+        "name": "Liga 1 Feminin",
+        "country": "Romania"
+    },
+    {
+        "name": "Supreme Division Women",
+        "country": "Russia"
+    },
+    {
+        "name": "I Liga - Women",
+        "country": "Slovakia"
+    },
+    {
+        "name": "Primera División Femenina",
+        "country": "Spain"
+    },
+    {
+        "name": "Damallsvenskan",
+        "country": "Sweden"
+    },
+    {
+        "name": "AXA Women’s Super League",
+        "country": "Switzerland"
+    }
+]
