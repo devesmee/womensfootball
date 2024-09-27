@@ -1,17 +1,22 @@
-import { FlatList, Image, Text, View } from 'react-native';
+import { FlatList, Image, Text, TouchableWithoutFeedback, View } from 'react-native';
 import { sharedStyles } from '../styles/SharedStyles';
 import { leagueDetailStyles } from '../styles/LeagueDetailStyles';
 
 interface Props {
     seasons: Season[];
+    onSeasonClicked: (seasonYears: string, year: number) => void;
 }
 
-export default function SeasonsList({ seasons }: Props) {
+export default function SeasonsList({ seasons, onSeasonClicked }: Props) {
     return <FlatList
         contentContainerStyle={leagueDetailStyles.flatList}
         data={sortedSeasons()}
         renderItem={({item}) => (
-            <Text style={sharedStyles.defaultText}>{getSeasonYears(item)}</Text>
+            <TouchableWithoutFeedback
+                onPress={() => onSeasonClicked(getSeasonYears(item), item.year)}
+            >
+                <Text style={sharedStyles.defaultText}>{getSeasonYears(item)}</Text>
+            </TouchableWithoutFeedback>
         )
     }
         keyExtractor={season => season.year.toString()}

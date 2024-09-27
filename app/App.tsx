@@ -3,10 +3,12 @@ import LeaguesOverview from './leagues_overview/LeaguesOverview';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LeagueDetail from './league_detail/LeagueDetail';
+import SeasonOverview from './season_overview/SeasonOverview';
 
 export type RootStackParamList = {
     LeaguesOverview: undefined;
     LeagueDetail: { leagueName: string };
+    SeasonOverview: { leagueId: number; seasonYears: string; year: number };
 };
 
 export default function App() {
@@ -29,6 +31,9 @@ export default function App() {
                     <Stack.Screen
                     name='LeagueDetail'
                     component={LeagueDetail} />
+                    <Stack.Screen
+                    name='SeasonOverview'
+                    component={SeasonOverview} />
             </Stack.Navigator>
     </NavigationContainer>
   );

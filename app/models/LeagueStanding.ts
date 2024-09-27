@@ -1,0 +1,3 @@
+interface LeagueStanding {
+    standings: TeamStanding[][]
+}

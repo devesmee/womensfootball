@@ -15,8 +15,9 @@ export const sharedStyles = StyleSheet.create({
         fontSize: 16,
         color: '#FFFFFF'
     },
-    titleText: {
+    defaultTitle: {
         fontSize: 26,
+        fontWeight: 'bold',
         color: '#FFFFFF'
     },
     flatList: {

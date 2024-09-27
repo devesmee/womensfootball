@@ -16,7 +16,7 @@ export default function LeagueHeader({ name, logo }: Props) {
             <View style={leagueDetailStyles.headerContentContainer}>
                 <View style={leagueDetailStyles.headerContentBackground} />
                 <Image style={leagueDetailStyles.logo} source={{uri: logo}} />
-                <Text style={sharedStyles.titleText}>{name}</Text>
+                <Text style={sharedStyles.defaultTitle}>{name}</Text>
             </View>
         </View>
     );

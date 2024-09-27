@@ -14,6 +14,7 @@ type Props = NativeStackScreenProps<
 RootStackParamList,
 'LeagueDetail'>;
 
+// TODO: improve UI
 export default function LeagueDetail({ route, navigation }: Props) {
     const { leagueName } = route.params;
     const [isLoading, setIsLoading] = useState(false);
@@ -59,9 +60,13 @@ export default function LeagueDetail({ route, navigation }: Props) {
         {leagueDetail !== undefined && (
         <View>
             <LeagueHeader name={leagueDetail.league.name} logo={leagueDetail.league.logo} />
-            <SeasonsList seasons={leagueDetail.seasons} />
+            <SeasonsList seasons={leagueDetail.seasons} onSeasonClicked={goToSeasonOverview} />
             </View>) }
         {hasError && <Text style={sharedStyles.defaultText}>Something went wrong, please try again later</Text>}
       </View>
     );
+
+    function goToSeasonOverview(seasonYears: string, year: number) {
+        navigation.navigate('SeasonOverview', { leagueId: leagueDetail?.league.id ?? 0, seasonYears, year });
+    }
   }
