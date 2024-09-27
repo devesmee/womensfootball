@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LeagueDetail from './league_detail/LeagueDetail';
 import SeasonOverview from './season_overview/SeasonOverview';
+import { StatusBar } from 'react-native';
 
 export type RootStackParamList = {
   LeaguesOverview: undefined;
@@ -16,6 +17,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
+      <StatusBar barStyle="light-content" backgroundColor="#190D3B" />
       <Stack.Navigator
         screenOptions={{
           headerTitle: '',
