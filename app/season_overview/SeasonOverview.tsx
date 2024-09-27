@@ -46,7 +46,6 @@ export default function SeasonOverview({ route }: Props) {
       );
 
       if (response.data.response.length !== 0) {
-        console.log(response.data.response.at(0)?.league.standings.at(0));
         setStandings(response.data.response.at(0)?.league.standings.at(0));
         setHasError(false);
       } else {
