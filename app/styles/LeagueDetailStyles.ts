@@ -4,39 +4,33 @@ export const leagueDetailStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#190D3B',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'flex-start',
+    paddingHorizontal: 20,
+    paddingTop: 20
   },
-  headerImageContainer: {
+  headerRow: {
     flexDirection: 'row',
-    height: 175,
-    justifyContent: 'flex-start',
-    zIndex: 0,
+    justifyContent: 'flex-start'
   },
-  headerImage: {
-    height: '100%',
-    width: '100%',
-    resizeMode: 'stretch',
-  },
-  headerContentBackground: {
-    backgroundColor: '#000000',
-    opacity: 0.5,
-    zIndex: 2,
-  },
-  headerContentContainer: {
-    alignItems: 'center',
-    zIndex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-    marginTop: -100,
+  headerColumn: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    paddingHorizontal: 20
   },
   logo: {
-    width: 100,
-    height: 100,
+    width: 75,
+    height: 75,
     resizeMode: 'contain',
   },
   flatList: {
     gap: 20,
-    paddingHorizontal: 20,
     marginTop: 20,
   },
+  headingText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#FFFFFF',
+    paddingTop: 20
+  }
 });

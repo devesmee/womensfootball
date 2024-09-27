@@ -7,7 +7,7 @@ export const seasonOverviewStyles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
     paddingHorizontal: 20,
-    paddingTop: 10,
+    paddingTop: 20,
   },
   flatList: {
     gap: 20,
