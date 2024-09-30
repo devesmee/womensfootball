@@ -11,7 +11,6 @@ import {
 
 type Props = NativeStackScreenProps<RootStackParamList, 'LeaguesOverview'>;
 
-// TODO: refactor this to using an interactive map with pins on every country that has an available women's football league
 export default function LeaguesOverview({ navigation }: Props) {
   const [leagues, setLeagues] = useState<League[]>();
 

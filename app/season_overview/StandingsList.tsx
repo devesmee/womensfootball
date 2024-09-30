@@ -1,30 +1,29 @@
-import { FlatList, Text, View } from 'react-native';
-import { sharedStyles } from '../styles/SharedStyles';
+import { View } from 'react-native';
 import { seasonOverviewStyles } from '../styles/SeasonOverviewStyles';
 import { TeamStanding } from '../models';
+import { Row, Rows, Table } from 'react-native-reanimated-table';
 
 interface Props {
   standings: TeamStanding[];
 }
 
 export default function StandingsList({ standings }: Props) {
+  const tableHead = ['#', "Team", "MP", "GD", "PTS"];
+  const tableData = standingsToArray()
+
+
   return (
-    <FlatList
-      contentContainerStyle={seasonOverviewStyles.flatList}
-      data={sortedStandings()}
-      renderItem={({ item }) => (
-        <View style={seasonOverviewStyles.standingRow}>
-          <Text style={sharedStyles.defaultText}>{item.rank}.</Text>
-          <Text style={sharedStyles.defaultText}>{item.team.name}</Text>
-        </View>
-      )}
-      keyExtractor={(standing) => standing.rank.toString()}
-    />
+    <View style={seasonOverviewStyles.tableContainer}>
+      <Table>
+        <Row data={tableHead} style={seasonOverviewStyles.tableHeaderRow} textStyle={seasonOverviewStyles.tableHeaderText}/>
+        <Rows data={tableData} style={seasonOverviewStyles.tableRow} textStyle={seasonOverviewStyles.tableText}/>
+      </Table>
+    </View>
   );
 
-  function sortedStandings() {
+  function standingsToArray() {
     return standings.sort((a, b) => {
       return a.rank - b.rank;
-    });
+    }).map(standing => [standing.rank, standing.team.name, standing.all.played, standing.goalsDiff, standing.points]);
   }
 }
