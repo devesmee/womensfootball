@@ -10,30 +10,36 @@ export const seasonOverviewStyles = StyleSheet.create({
   },
   standingsView: {
     flex: 1,
-    alignSelf: 'stretch'
+    alignSelf: 'stretch',
   },
   tableContainer: {
     flex: 1,
     marginTop: 20,
     backgroundColor: '#3e2c70',
-    padding: 10
+    padding: 10,
+    borderRadius: 10,
+    gap: 5,
   },
   tableHeaderRow: {
-    height: 40,
-    backgroundColor: '#f1f8ff'
+    backgroundColor: '#f1f8ff',
+    borderRadius: 10,
   },
   tableHeaderText: {
     fontSize: 14,
-    backgroundColor: '#FFFFFF',
+    color: '#000000',
     textAlign: 'center',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
-  tableRow: {
-    marginTop: 10
-  },
-  tableText: {
+  tableRowText: {
     fontSize: 12,
     color: '#FFFFFF',
-    textAlign: 'center'
-  }
+    textAlign: 'center',
+  },
+  smallTableColumn: {
+    flex: 1,
+  },
+  smallTableColumnCentered: {
+    flex: 1,
+    justifyContent: 'center',
+  },
 });
