@@ -17,6 +17,7 @@ export const leagueDetailStyles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     paddingHorizontal: 20,
+    marginRight: 5
   },
   logo: {
     width: 75,
