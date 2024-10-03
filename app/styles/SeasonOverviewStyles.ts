@@ -12,9 +12,11 @@ export const seasonOverviewStyles = StyleSheet.create({
     flex: 1,
     alignSelf: 'stretch',
   },
+  scrollViewContainer: {
+    marginVertical: 20,
+    paddingBottom: 67,
+  },
   tableContainer: {
-    flex: 1,
-    marginTop: 20,
     backgroundColor: '#3e2c70',
     padding: 10,
     borderRadius: 10,
