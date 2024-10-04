@@ -11,11 +11,11 @@ interface Props {
 export default function LeagueHeader({ name, logo, country }: Props) {
   return (
     <View style={leagueDetailStyles.headerRow}>
-        <Image style={leagueDetailStyles.logo} source={{ uri: logo }} />
-        <View style={leagueDetailStyles.headerColumn}>
-          <Text style={sharedStyles.defaultTitle}>{name}</Text>
-          <Text style={sharedStyles.defaultText}>{country}</Text>
-        </View>
+      <Image style={leagueDetailStyles.logo} source={{ uri: logo }} />
+      <View style={leagueDetailStyles.headerColumn}>
+        <Text style={sharedStyles.defaultTitle}>{name}</Text>
+        <Text style={sharedStyles.defaultText}>{country}</Text>
+      </View>
     </View>
   );
 }

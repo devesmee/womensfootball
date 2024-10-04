@@ -17,7 +17,6 @@ import { ApiResponse, LeagueDetails } from '../models';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'LeagueDetail'>;
 
-// TODO: improve UI
 export default function LeagueDetail({ route, navigation }: Props) {
   const { leagueName } = route.params;
   const [isLoading, setIsLoading] = useState(false);

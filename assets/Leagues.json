@@ -16,7 +16,7 @@
         }
     },
     {
-        "name": "WK League",
+        "name": "WK-League",
         "country": "South Korea",
         "position": {
             "lat": 36.638392,
@@ -32,7 +32,7 @@
         }
     },
     {
-        "name": "NWSL",
+        "name": "NWSL Women",
         "country": "USA",
         "position": {
             "lat": 39.7837304,

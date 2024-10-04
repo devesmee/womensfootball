@@ -17,7 +17,6 @@ import { ApiResponse, Standing, TeamStanding } from '../models';
 type Props = NativeStackScreenProps<RootStackParamList, 'SeasonOverview'>;
 
 // TODO: also show top scorers, top assists and top cards using a tab bar at the top
-// TODO: make standings UI neater
 export default function SeasonOverview({ route }: Props) {
   const { leagueId, seasonYears, year } = route.params;
   const [isLoading, setIsLoading] = useState(false);
@@ -67,7 +66,7 @@ export default function SeasonOverview({ route }: Props) {
     <View style={seasonOverviewStyles.container}>
       {isLoading && <LoadingSpinner />}
       {standings !== undefined && (
-        <View>
+        <View style={seasonOverviewStyles.standingsView}>
           <Text style={sharedStyles.defaultTitle}>{seasonYears}</Text>
           <StandingsList standings={standings} />
         </View>

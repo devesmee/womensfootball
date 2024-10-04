@@ -7,16 +7,17 @@ export const leagueDetailStyles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
     paddingHorizontal: 20,
-    paddingTop: 20
+    paddingTop: 20,
   },
   headerRow: {
     flexDirection: 'row',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
   },
   headerColumn: {
     flexDirection: 'column',
     justifyContent: 'center',
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
+    marginRight: 5
   },
   logo: {
     width: 75,
@@ -31,6 +32,6 @@ export const leagueDetailStyles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     color: '#FFFFFF',
-    paddingTop: 20
-  }
+    paddingTop: 20,
+  },
 });
