@@ -12,8 +12,9 @@ import {
 import LoadingSpinner from '../reusable_components/LoadingSpinner';
 import LeagueHeader from './LeagueHeader';
 import { leagueDetailStyles } from '../styles/LeagueDetailStyles';
-import SeasonsList from './SeasonsList';
-import { ApiResponse, LeagueDetails } from '../models';
+import { ApiResponse, LeagueDetails, Season } from '../models';
+import { Dropdown } from 'react-native-element-dropdown';
+import { LeagueDetailsJSON } from '../models/LeagueDetails';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'LeagueDetail'>;
 
@@ -21,7 +22,8 @@ export default function LeagueDetail({ route, navigation }: Props) {
   const { leagueName } = route.params;
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [leagueDetail, setLeagueDetail] = useState<LeagueDetails>();
+  const [leagueDetails, setLeagueDetails] = useState<LeagueDetails>();
+  const [selectedSeason, setSelectedSeason] = useState<Season | undefined>();
 
   useEffect(() => {
     fetchLeague();
@@ -31,7 +33,7 @@ export default function LeagueDetail({ route, navigation }: Props) {
     setIsLoading(true);
 
     try {
-      const response = await axios.get<ApiResponse<LeagueDetails>>(
+      const response = await axios.get<ApiResponse<LeagueDetailsJSON>>(
         API_BASE_URL + LEAGUES_PATH,
         {
           headers: {
@@ -43,8 +45,11 @@ export default function LeagueDetail({ route, navigation }: Props) {
         }
       );
 
-      if (response.data.response.length !== 0) {
-        setLeagueDetail(response.data.response.at(0));
+      const firstElement = response.data.response.at(0);
+      if (response.data.response.length !== 0 && firstElement !== undefined) {
+        const leagueDetails = new LeagueDetails(firstElement);
+        setLeagueDetails(leagueDetails);
+        setSelectedSeason(leagueDetails.seasons[0]);
         setHasError(false);
       } else {
         console.log(
@@ -66,18 +71,30 @@ export default function LeagueDetail({ route, navigation }: Props) {
   return (
     <View style={leagueDetailStyles.container}>
       {isLoading && <LoadingSpinner />}
-      {leagueDetail !== undefined && (
+      {leagueDetails !== undefined && (
         <View>
           <LeagueHeader
-            name={leagueDetail.league.name}
-            logo={leagueDetail.league.logo}
-            country={leagueDetail.country.name}
+            name={leagueDetails.league.name}
+            logo={leagueDetails.league.logo}
+            country={leagueDetails.country.name}
           />
-          <Text style={leagueDetailStyles.headingText}>Seasons</Text>
-          <SeasonsList
-            seasons={leagueDetail.seasons}
-            onSeasonClicked={goToSeasonOverview}
-          />
+          <View style={leagueDetailStyles.seasonRow}>
+            <Text style={leagueDetailStyles.headingText}>Season</Text>
+            <Dropdown
+              style={leagueDetailStyles.dropdownStyle}
+              mode="auto"
+              containerStyle={leagueDetailStyles.dropdownContainer}
+              itemTextStyle={leagueDetailStyles.dropdownItemTextStyle}
+              selectedTextStyle={leagueDetailStyles.dropdownItemTextStyle}
+              activeColor="#3e2c70"
+              iconColor="#FFFFFF"
+              data={leagueDetails.seasons}
+              labelField="seasonYears"
+              valueField="year"
+              value={selectedSeason}
+              onChange={(selected) => setSelectedSeason(selected)}
+            />
+          </View>
         </View>
       )}
       {hasError && (
@@ -90,7 +107,7 @@ export default function LeagueDetail({ route, navigation }: Props) {
 
   function goToSeasonOverview(seasonYears: string, year: number) {
     navigation.navigate('SeasonOverview', {
-      leagueId: leagueDetail?.league.id ?? 0,
+      leagueId: leagueDetails?.league.id ?? 0,
       seasonYears,
       year,
     });

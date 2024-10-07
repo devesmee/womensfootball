@@ -17,12 +17,26 @@ export const leagueDetailStyles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     paddingHorizontal: 20,
-    marginRight: 5
+    marginRight: 5,
   },
   logo: {
     width: 75,
     height: 75,
     resizeMode: 'contain',
+  },
+  seasonRow: {
+    flexDirection: 'row',
+    paddingTop: 20,
+    gap: 20,
+  },
+  dropdownStyle: {
+    width: 150,
+  },
+  dropdownContainer: {
+    backgroundColor: '#190D3B',
+  },
+  dropdownItemTextStyle: {
+    color: '#FFFFFF',
   },
   flatList: {
     gap: 20,
@@ -32,6 +46,5 @@ export const leagueDetailStyles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     color: '#FFFFFF',
-    paddingTop: 20,
   },
 });
