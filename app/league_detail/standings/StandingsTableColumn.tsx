@@ -1,4 +1,4 @@
-import { seasonOverviewStyles } from '../styles/SeasonOverviewStyles';
+import { leagueDetailStyles } from '../../styles/LeagueDetailStyles';
 import { DataTable } from 'react-native-paper';
 
 interface Props {
@@ -16,13 +16,13 @@ export default function StandingsTableColumn({
     <DataTable.Cell
       textStyle={
         isTableHeader
-          ? seasonOverviewStyles.tableHeaderText
-          : seasonOverviewStyles.tableRowText
+          ? leagueDetailStyles.tableHeaderText
+          : leagueDetailStyles.tableRowText
       }
       style={
         isCentered
-          ? seasonOverviewStyles.smallTableColumnCentered
-          : seasonOverviewStyles.smallTableColumn
+          ? leagueDetailStyles.smallTableColumnCentered
+          : leagueDetailStyles.smallTableColumn
       }
     >
       {text}
