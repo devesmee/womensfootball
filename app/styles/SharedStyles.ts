@@ -10,7 +10,7 @@ export const sharedStyles = StyleSheet.create({
   },
   loadingSpinner: {
     backgroundColor: '#190D3B',
-    marginTop: 20
+    marginTop: 20,
   },
   defaultText: {
     fontSize: 16,

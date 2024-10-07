@@ -89,6 +89,6 @@ export const leagueDetailStyles = StyleSheet.create({
     justifyContent: 'center',
   },
   errorText: {
-    marginTop: 20
-  }
+    marginTop: 20,
+  },
 });

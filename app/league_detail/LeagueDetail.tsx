@@ -13,7 +13,13 @@ import {
 import LoadingSpinner from '../reusable_components/LoadingSpinner';
 import LeagueHeader from './LeagueHeader';
 import { leagueDetailStyles } from '../styles/LeagueDetailStyles';
-import { ApiResponse, LeagueDetails, Season, Standing, TeamStanding } from '../models';
+import {
+  ApiResponse,
+  LeagueDetails,
+  Season,
+  Standing,
+  TeamStanding,
+} from '../models';
 import { Dropdown } from 'react-native-element-dropdown';
 import { LeagueDetailsJSON } from '../models/LeagueDetails';
 import StandingsList from './standings/StandingsList';
@@ -141,18 +147,20 @@ export default function LeagueDetail({ route }: Props) {
         </View>
       )}
       <View style={leagueDetailStyles.standingsContainer}>
-      {isLoading && <LoadingSpinner />}
-      {standings !== undefined && (
-        <View style={leagueDetailStyles.standingsView}>
-          <StandingsList standings={standings} />
-        </View>
-      )}
-      {hasError && (
-        <Text style={[sharedStyles.defaultText, leagueDetailStyles.errorText]}>
-          Something went wrong, please try again later
-        </Text>
-      )}
-    </View>
+        {isLoading && <LoadingSpinner />}
+        {standings !== undefined && (
+          <View style={leagueDetailStyles.standingsView}>
+            <StandingsList standings={standings} />
+          </View>
+        )}
+        {hasError && (
+          <Text
+            style={[sharedStyles.defaultText, leagueDetailStyles.errorText]}
+          >
+            Something went wrong, please try again later
+          </Text>
+        )}
+      </View>
     </View>
   );
 }
