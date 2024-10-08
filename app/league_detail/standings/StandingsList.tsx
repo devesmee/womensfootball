@@ -21,7 +21,7 @@ export default function StandingsList({ standings }: Props) {
           />
           <DataTable.Title
             textStyle={leagueDetailStyles.tableHeaderText}
-            style={{ flex: 5 }}
+            style={leagueDetailStyles.tableTeamHeader}
           >
             Team
           </DataTable.Title>

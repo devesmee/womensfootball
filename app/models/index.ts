@@ -6,6 +6,7 @@ export { League } from './League';
 export { LeagueDetails } from './LeagueDetails';
 export { LeagueStanding } from './LeagueStanding';
 export { Season } from './Season';
+export { SeasonDetails } from './SeasonDetails';
 export { Standing } from './Standing';
 export { Team } from './Team';
 export { TeamStanding } from './TeamStanding';

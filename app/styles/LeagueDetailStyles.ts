@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { SegmentedButtons } from 'react-native-paper';
 
 export const leagueDetailStyles = StyleSheet.create({
   container: {
@@ -39,6 +40,10 @@ export const leagueDetailStyles = StyleSheet.create({
   dropdownItemTextStyle: {
     color: '#FFFFFF',
   },
+  segmentedButtons: {
+    marginTop: 20,
+    alignSelf: 'center'
+  },
   flatList: {
     gap: 20,
     marginTop: 20,
@@ -61,13 +66,13 @@ export const leagueDetailStyles = StyleSheet.create({
     paddingBottom: 67,
   },
   tableContainer: {
-    backgroundColor: '#3e2c70',
+    backgroundColor: '#3E2C70',
     padding: 10,
     borderRadius: 10,
     gap: 5,
   },
   tableHeaderRow: {
-    backgroundColor: '#f1f8ff',
+    backgroundColor: '#F1F8FF',
     borderRadius: 10,
   },
   tableHeaderText: {
@@ -80,6 +85,19 @@ export const leagueDetailStyles = StyleSheet.create({
     fontSize: 12,
     color: '#FFFFFF',
     textAlign: 'center',
+  },
+  tableTeamHeader: {
+    flex: 5
+  },
+  tableTeamLogo: {
+    height: 20,
+    width: 20
+  },
+  tableTeamColumn: {
+    flex: 4.2,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8
   },
   smallTableColumn: {
     flex: 1,

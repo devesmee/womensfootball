@@ -9,9 +9,9 @@ interface Props {
 export default function TeamTableColumn({ team }: Props) {
   return (
     <View
-      style={{ flex: 5, flexDirection: 'row', alignItems: 'center', gap: 8 }}
+      style={leagueDetailStyles.tableTeamColumn}
     >
-      <Image src={team.logo} style={{ height: 20, width: 20 }}></Image>
+      <Image src={team.logo} style={leagueDetailStyles.tableTeamLogo}></Image>
       <Text style={leagueDetailStyles.tableRowText}>{team.name}</Text>
     </View>
   );
