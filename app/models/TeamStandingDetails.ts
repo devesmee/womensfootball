@@ -1,9 +1,9 @@
-import { Goals } from './Goals';
+import { TeamGoals } from './TeamGoals';
 
 export interface TeamStandingDetails {
   played: number;
   win: number;
   draw: number;
   lose: number;
-  goals: Goals;
+  goals: TeamGoals;
 }

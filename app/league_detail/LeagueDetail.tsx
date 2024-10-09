@@ -17,12 +17,13 @@ import {
   ApiResponse,
   LeagueDetails,
   Season,
-  Standing,
-  TeamStanding,
+  SeasonDetails,
 } from '../models';
 import { Dropdown } from 'react-native-element-dropdown';
 import { LeagueDetailsJSON } from '../models/LeagueDetails';
-import StandingsList from './standings/StandingsList';
+import { SegmentedButtons, ToggleButton } from 'react-native-paper';
+import StandingsContainer from './standings/StandingsContainer';
+import TopscorersContainer from './topscorers/TopscorersContainer';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'LeagueDetail'>;
 
@@ -31,16 +32,12 @@ export default function LeagueDetail({ route }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [leagueDetails, setLeagueDetails] = useState<LeagueDetails>();
+  const [selectedSeasonDetails, setSelectedSeasonDetails] = useState(SeasonDetails.table);
   const [selectedSeason, setSelectedSeason] = useState<Season | undefined>();
-  const [standings, setStandings] = useState<TeamStanding[]>();
 
   useEffect(() => {
     fetchLeague();
   }, []);
-
-  useEffect(() => {
-    fetchStandings();
-  }, [selectedSeason]);
 
   const fetchLeague = async () => {
     setHasError(false);
@@ -83,43 +80,9 @@ export default function LeagueDetail({ route }: Props) {
     }
   };
 
-  const fetchStandings = async () => {
-    setHasError(false);
-    setIsLoading(true);
-
-    try {
-      const response = await axios.get<ApiResponse<Standing>>(
-        API_BASE_URL + STANDINGS_PATH,
-        {
-          headers: {
-            [API_KEY_HEADER]: process.env.EXPO_PUBLIC_API_KEY,
-          },
-          params: {
-            league: leagueDetails?.league.id,
-            season: selectedSeason?.year,
-          },
-        }
-      );
-
-      if (response.data.response.length !== 0) {
-        setStandings(response.data.response.at(0)?.league.standings.at(0));
-        setHasError(false);
-      } else {
-        console.log(
-          'Something went wrong when fetching the standings: ',
-          response.data.errors
-        );
-        setHasError(true);
-      }
-      setIsLoading(false);
-    } catch (error) {
-      console.log('Something went wrong when fetching the standings: ', error);
-      setIsLoading(false);
-      setHasError(true);
-    }
-  };
   return (
     <View style={leagueDetailStyles.container}>
+      {isLoading && <LoadingSpinner />}
       {leagueDetails !== undefined && (
         <View>
           <LeagueHeader
@@ -144,23 +107,40 @@ export default function LeagueDetail({ route }: Props) {
               onChange={(selected) => setSelectedSeason(selected)}
             />
           </View>
+          <SegmentedButtons
+            style={leagueDetailStyles.segmentedButtons}
+            value={selectedSeasonDetails}
+            onValueChange={(selected) => setSelectedSeasonDetails(selected as SeasonDetails)}
+            buttons={[
+              {
+                value: SeasonDetails.table,
+                label: SeasonDetails.table,
+                checkedColor: '#190D3B',
+                uncheckedColor: '#FFFFFF'
+              },
+              {
+                value: SeasonDetails.topscorers,
+                label: SeasonDetails.topscorers,
+                checkedColor: '#190D3B',
+                uncheckedColor: '#FFFFFF'
+              }
+            ]}
+          />
         </View>
       )}
-      <View style={leagueDetailStyles.standingsContainer}>
-        {isLoading && <LoadingSpinner />}
-        {standings !== undefined && (
-          <View style={leagueDetailStyles.standingsView}>
-            <StandingsList standings={standings} />
-          </View>
-        )}
-        {hasError && (
-          <Text
-            style={[sharedStyles.defaultText, leagueDetailStyles.errorText]}
-          >
-            Something went wrong, please try again later
-          </Text>
-        )}
-      </View>
+      {hasError && (
+        <Text style={[sharedStyles.defaultText, sharedStyles.errorText]}>Something went wrong, please try again later</Text>
+      )}
+      <StandingsContainer
+        leagueId={leagueDetails?.league.id}
+        year={selectedSeason?.year}
+        isVisible={selectedSeasonDetails === SeasonDetails.table}
+      />
+      <TopscorersContainer
+      leagueId={leagueDetails?.league.id}
+      year={selectedSeason?.year}
+      isVisible={selectedSeasonDetails === SeasonDetails.topscorers}
+      />
     </View>
   );
 }

@@ -1,4 +1,4 @@
-export interface Goals {
+export interface TeamGoals {
   for: number;
   against: number;
 }
