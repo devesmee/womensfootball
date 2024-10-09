@@ -9,24 +9,22 @@ import {
 } from '../../constants/Constants';
 import LoadingSpinner from '../../reusable_components/LoadingSpinner';
 import { leagueDetailStyles } from '../../styles/LeagueDetailStyles';
-import {
-  ApiResponse,
-  Standing,
-  TeamStanding,
-} from '../../models';
+import { ApiResponse, Standing, TeamStanding } from '../../models';
 import React from 'react';
 import StandingsTable from './StandingsTable';
 
 interface Props {
-    leagueId?: number;
-    year?: number;
-    isVisible: boolean;
+  leagueId?: number;
+  year?: number;
+  isVisible: boolean;
 }
 
 function StandingsContainer({ leagueId, year, isVisible }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [standings, setStandings] = useState<TeamStanding[] | undefined>(undefined);
+  const [standings, setStandings] = useState<TeamStanding[] | undefined>(
+    undefined
+  );
 
   useEffect(() => {
     fetchStandings();
@@ -64,38 +62,37 @@ function StandingsContainer({ leagueId, year, isVisible }: Props) {
         }
         setIsLoading(false);
       } catch (error) {
-        console.log('Something went wrong when fetching the standings: ', error);
+        console.log(
+          'Something went wrong when fetching the standings: ',
+          error
+        );
         setIsLoading(false);
         setHasError(true);
       }
     }
   };
 
-  return (
-    isVisible ? (
-      <View style={leagueDetailStyles.standingsContainer}>
-          {isLoading && <LoadingSpinner />}
-          {standings !== undefined && (
-            <View style={leagueDetailStyles.standingsView}>
-              <StandingsTable standings={standings} />
-            </View>
-          )}
-          {hasError && (
-            <Text
-              style={[sharedStyles.defaultText, sharedStyles.errorText]}
-            >
-              Something went wrong, please try again later
-            </Text>
-          )}
+  return isVisible ? (
+    <View style={leagueDetailStyles.standingsContainer}>
+      {isLoading && <LoadingSpinner />}
+      {standings !== undefined && (
+        <View style={leagueDetailStyles.standingsView}>
+          <StandingsTable standings={standings} />
         </View>
-    ) : null
-  );
+      )}
+      {hasError && (
+        <Text style={[sharedStyles.defaultText, sharedStyles.errorText]}>
+          Something went wrong, please try again later
+        </Text>
+      )}
+    </View>
+  ) : null;
 }
 
 export default React.memo(StandingsContainer, (prevProps, nextProps) => {
-    return (
-      prevProps.leagueId === nextProps.leagueId &&
-      prevProps.year === nextProps.year &&
-      prevProps.isVisible === nextProps.isVisible
-    );
-  });
+  return (
+    prevProps.leagueId === nextProps.leagueId &&
+    prevProps.year === nextProps.year &&
+    prevProps.isVisible === nextProps.isVisible
+  );
+});

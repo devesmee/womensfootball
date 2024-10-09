@@ -1,7 +1,7 @@
-import { Player } from "./Player";
-import { PlayerStatistics } from "./PlayerStatistics";
+import { Player } from './Player';
+import { PlayerStatistics } from './PlayerStatistics';
 
 export interface Topscorer {
-    player: Player;
-    statistics: PlayerStatistics[];
+  player: Player;
+  statistics: PlayerStatistics[];
 }

@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { SegmentedButtons } from 'react-native-paper';
-// TODO: checken welke styles niet gebruikt worden
+
 export const leagueDetailStyles = StyleSheet.create({
   container: {
     flex: 1,
@@ -42,11 +41,7 @@ export const leagueDetailStyles = StyleSheet.create({
   },
   segmentedButtons: {
     marginTop: 20,
-    alignSelf: 'center'
-  },
-  flatList: {
-    gap: 20,
-    marginTop: 20,
+    alignSelf: 'center',
   },
   headingText: {
     fontSize: 20,
@@ -55,7 +50,7 @@ export const leagueDetailStyles = StyleSheet.create({
   },
   standingsContainer: {
     flex: 1,
-    alignSelf: 'stretch'
+    alignSelf: 'stretch',
   },
   standingsView: {
     flex: 1,
@@ -63,6 +58,6 @@ export const leagueDetailStyles = StyleSheet.create({
   },
   topscorersContainer: {
     flex: 1,
-    marginVertical: 20
-  }
+    marginVertical: 20,
+  },
 });

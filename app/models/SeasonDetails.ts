@@ -1,4 +1,4 @@
 export enum SeasonDetails {
-    table = "Table",
-    topscorers = "Topscorers"
+  table = 'Table',
+  topscorers = 'Topscorers',
 }

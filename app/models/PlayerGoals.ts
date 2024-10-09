@@ -1,3 +1,3 @@
 export interface PlayerGoals {
-    total: number;
+  total: number;
 }

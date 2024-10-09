@@ -1,4 +1,3 @@
-import { leagueDetailStyles } from '../../styles/LeagueDetailStyles';
 import { DataTable } from 'react-native-paper';
 import { standingsTableStyles } from '../../styles/StandingsTableStyles';
 

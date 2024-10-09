@@ -5,31 +5,26 @@ import axios from 'axios';
 import {
   API_BASE_URL,
   API_KEY_HEADER,
-  STANDINGS_PATH,
   TOPSCORERS_PATH,
 } from '../../constants/Constants';
 import LoadingSpinner from '../../reusable_components/LoadingSpinner';
 import { leagueDetailStyles } from '../../styles/LeagueDetailStyles';
-import {
-  ApiResponse,
-  Standing,
-  TeamStanding,
-  Topscorer,
-} from '../../models';
-import StandingsList from '../standings/StandingsTable';
+import { ApiResponse, Topscorer } from '../../models';
 import React from 'react';
 import TopscorersList from './TopscorersList';
 
 interface Props {
-    leagueId?: number;
-    year?: number;
-    isVisible: boolean;
+  leagueId?: number;
+  year?: number;
+  isVisible: boolean;
 }
 
 function TopscorersContainer({ leagueId, year, isVisible }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [topscorers, setTopscorers] = useState<Topscorer[] | undefined>(undefined);
+  const [topscorers, setTopscorers] = useState<Topscorer[] | undefined>(
+    undefined
+  );
 
   useEffect(() => {
     fetchTopscorers();
@@ -67,36 +62,33 @@ function TopscorersContainer({ leagueId, year, isVisible }: Props) {
         }
         setIsLoading(false);
       } catch (error) {
-        console.log('Something went wrong when fetching the topscorers: ', error);
+        console.log(
+          'Something went wrong when fetching the topscorers: ',
+          error
+        );
         setIsLoading(false);
         setHasError(true);
       }
     }
   };
 
-  return (
-    isVisible ? (
-      <View style={leagueDetailStyles.topscorersContainer}>
-          {isLoading && <LoadingSpinner />}
-          {topscorers !== undefined && (
-            <TopscorersList topscorers={topscorers} />
-          )}
-          {hasError && (
-            <Text
-              style={[sharedStyles.defaultText, sharedStyles.errorText]}
-            >
-              Something went wrong, please try again later
-            </Text>
-          )}
-        </View>
-    ) : null
-  );
+  return isVisible ? (
+    <View style={leagueDetailStyles.topscorersContainer}>
+      {isLoading && <LoadingSpinner />}
+      {topscorers !== undefined && <TopscorersList topscorers={topscorers} />}
+      {hasError && (
+        <Text style={[sharedStyles.defaultText, sharedStyles.errorText]}>
+          Something went wrong, please try again later
+        </Text>
+      )}
+    </View>
+  ) : null;
 }
 
 export default React.memo(TopscorersContainer, (prevProps, nextProps) => {
-    return (
-      prevProps.leagueId === nextProps.leagueId &&
-      prevProps.year === nextProps.year &&
-      prevProps.isVisible === nextProps.isVisible
-    );
-  });
+  return (
+    prevProps.leagueId === nextProps.leagueId &&
+    prevProps.year === nextProps.year &&
+    prevProps.isVisible === nextProps.isVisible
+  );
+});
