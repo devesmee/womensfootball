@@ -23,6 +23,7 @@ import { Dropdown } from 'react-native-element-dropdown';
 import { LeagueDetailsJSON } from '../models/LeagueDetails';
 import { SegmentedButtons, ToggleButton } from 'react-native-paper';
 import StandingsContainer from './standings/StandingsContainer';
+import TopscorersContainer from './topscorers/TopscorersContainer';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'LeagueDetail'>;
 
@@ -118,8 +119,8 @@ export default function LeagueDetail({ route }: Props) {
                 uncheckedColor: '#FFFFFF'
               },
               {
-                value: SeasonDetails.topScorers,
-                label: SeasonDetails.topScorers,
+                value: SeasonDetails.topscorers,
+                label: SeasonDetails.topscorers,
                 checkedColor: '#190D3B',
                 uncheckedColor: '#FFFFFF'
               }
@@ -128,12 +129,17 @@ export default function LeagueDetail({ route }: Props) {
         </View>
       )}
       {hasError && (
-        <Text style={[sharedStyles.defaultText, leagueDetailStyles.errorText]}>Something went wrong, please try again later</Text>
+        <Text style={[sharedStyles.defaultText, sharedStyles.errorText]}>Something went wrong, please try again later</Text>
       )}
       <StandingsContainer
         leagueId={leagueDetails?.league.id}
         year={selectedSeason?.year}
         isVisible={selectedSeasonDetails === SeasonDetails.table}
+      />
+      <TopscorersContainer
+      leagueId={leagueDetails?.league.id}
+      year={selectedSeason?.year}
+      isVisible={selectedSeasonDetails === SeasonDetails.topscorers}
       />
     </View>
   );

@@ -19,7 +19,7 @@ For Android:
 `npm run android`
 
 ## Available data
-This app only includes the women's football leagues that are available on [API Football](https://www.api-football.com/) using the free tier. This means that for some seasons details cannot be retrieved.
+This app only includes the women's football leagues that are available on [API Football](https://www.api-football.com/) using the free tier. This means that for some leagues / seasons the details cannot be retrieved.
 
 ## ⚠️ Disclaimer ⚠️
 I am in no way affliated with any of the teams included in this app. This app was built purely for personal purposes and to gain more experience building apps with React Native. I do not own any of the images and all credit goes to their respective owners.

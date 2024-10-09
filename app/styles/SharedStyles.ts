@@ -21,7 +21,7 @@ export const sharedStyles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#FFFFFF',
   },
-  flatList: {
-    gap: 20,
-  },
+  errorText: {
+    marginTop: 20,
+  }
 });

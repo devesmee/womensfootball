@@ -6,6 +6,7 @@ import {
   API_BASE_URL,
   API_KEY_HEADER,
   STANDINGS_PATH,
+  TOPSCORERS_PATH,
 } from '../../constants/Constants';
 import LoadingSpinner from '../../reusable_components/LoadingSpinner';
 import { leagueDetailStyles } from '../../styles/LeagueDetailStyles';
@@ -13,9 +14,11 @@ import {
   ApiResponse,
   Standing,
   TeamStanding,
+  Topscorer,
 } from '../../models';
+import StandingsList from '../standings/StandingsTable';
 import React from 'react';
-import StandingsTable from './StandingsTable';
+import TopscorersList from './TopscorersList';
 
 interface Props {
     leagueId?: number;
@@ -23,24 +26,24 @@ interface Props {
     isVisible: boolean;
 }
 
-function StandingsContainer({ leagueId, year, isVisible }: Props) {
+function TopscorersContainer({ leagueId, year, isVisible }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [standings, setStandings] = useState<TeamStanding[] | undefined>(undefined);
+  const [topscorers, setTopscorers] = useState<Topscorer[] | undefined>(undefined);
 
   useEffect(() => {
-    fetchStandings();
+    fetchTopscorers();
   }, [year]);
 
-  const fetchStandings = async () => {
+  const fetchTopscorers = async () => {
     setHasError(false);
     setIsLoading(true);
-    setStandings(undefined);
+    setTopscorers(undefined);
 
     if (leagueId !== undefined && year !== undefined) {
       try {
-        const response = await axios.get<ApiResponse<Standing>>(
-          API_BASE_URL + STANDINGS_PATH,
+        const response = await axios.get<ApiResponse<Topscorer>>(
+          API_BASE_URL + TOPSCORERS_PATH,
           {
             headers: {
               [API_KEY_HEADER]: process.env.EXPO_PUBLIC_API_KEY,
@@ -53,18 +56,18 @@ function StandingsContainer({ leagueId, year, isVisible }: Props) {
         );
 
         if (response.data.response.length !== 0) {
-          setStandings(response.data.response.at(0)?.league.standings.at(0));
+          setTopscorers(response.data.response);
           setHasError(false);
         } else {
           console.log(
-            'Something went wrong when fetching the standings: ',
+            'Something went wrong when fetching the topscorers: ',
             response.data.errors
           );
           setHasError(true);
         }
         setIsLoading(false);
       } catch (error) {
-        console.log('Something went wrong when fetching the standings: ', error);
+        console.log('Something went wrong when fetching the topscorers: ', error);
         setIsLoading(false);
         setHasError(true);
       }
@@ -73,12 +76,10 @@ function StandingsContainer({ leagueId, year, isVisible }: Props) {
 
   return (
     isVisible ? (
-      <View style={leagueDetailStyles.standingsContainer}>
+      <View style={leagueDetailStyles.topscorersContainer}>
           {isLoading && <LoadingSpinner />}
-          {standings !== undefined && (
-            <View style={leagueDetailStyles.standingsView}>
-              <StandingsTable standings={standings} />
-            </View>
+          {topscorers !== undefined && (
+            <TopscorersList topscorers={topscorers} />
           )}
           {hasError && (
             <Text
@@ -92,7 +93,7 @@ function StandingsContainer({ leagueId, year, isVisible }: Props) {
   );
 }
 
-export default React.memo(StandingsContainer, (prevProps, nextProps) => {
+export default React.memo(TopscorersContainer, (prevProps, nextProps) => {
     return (
       prevProps.leagueId === nextProps.leagueId &&
       prevProps.year === nextProps.year &&

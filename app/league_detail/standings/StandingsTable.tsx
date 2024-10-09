@@ -4,24 +4,25 @@ import { DataTable } from 'react-native-paper';
 import TeamTableColumn from './TeamTableColumn';
 import { ScrollView } from 'react-native';
 import StandingsTableColumn from './StandingsTableColumn';
+import { standingsTableStyles } from '../../styles/StandingsTableStyles';
 
 interface Props {
   standings: TeamStanding[];
 }
 
-export default function StandingsList({ standings }: Props) {
+export default function StandingsTable({ standings }: Props) {
   return (
-    <ScrollView style={leagueDetailStyles.scrollViewContainer}>
-      <DataTable style={leagueDetailStyles.tableContainer}>
-        <DataTable.Header style={leagueDetailStyles.tableHeaderRow}>
+    <ScrollView style={standingsTableStyles.scrollViewContainer}>
+      <DataTable style={standingsTableStyles.tableContainer}>
+        <DataTable.Header style={standingsTableStyles.tableHeaderRow}>
           <StandingsTableColumn
             text="#"
             isCentered={false}
             isTableHeader={true}
           />
           <DataTable.Title
-            textStyle={leagueDetailStyles.tableHeaderText}
-            style={leagueDetailStyles.tableTeamHeader}
+            textStyle={standingsTableStyles.tableHeaderText}
+            style={standingsTableStyles.tableTeamHeader}
           >
             Team
           </DataTable.Title>
