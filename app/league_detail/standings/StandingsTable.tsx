@@ -1,4 +1,3 @@
-import { leagueDetailStyles } from '../../styles/LeagueDetailStyles';
 import { TeamStanding } from '../../models';
 import { DataTable } from 'react-native-paper';
 import TeamTableColumn from './TeamTableColumn';

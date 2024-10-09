@@ -1,6 +1,5 @@
 import { Image, Text, View } from 'react-native';
 import { Team } from '../../models';
-import { leagueDetailStyles } from '../../styles/LeagueDetailStyles';
 import { standingsTableStyles } from '../../styles/StandingsTableStyles';
 
 interface Props {
@@ -9,9 +8,7 @@ interface Props {
 
 export default function TeamTableColumn({ team }: Props) {
   return (
-    <View
-      style={standingsTableStyles.tableTeamColumn}
-    >
+    <View style={standingsTableStyles.tableTeamColumn}>
       <Image src={team.logo} style={standingsTableStyles.tableTeamLogo}></Image>
       <Text style={standingsTableStyles.tableRowText}>{team.name}</Text>
     </View>

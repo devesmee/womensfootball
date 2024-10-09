@@ -1,14 +1,6 @@
 import { StyleSheet } from 'react-native';
 
 export const standingsTableStyles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignSelf: 'stretch',
-  },
-  view: {
-    flex: 1,
-    alignSelf: 'stretch',
-  },
   scrollViewContainer: {
     marginVertical: 20,
     paddingBottom: 67,
@@ -35,17 +27,17 @@ export const standingsTableStyles = StyleSheet.create({
     textAlign: 'center',
   },
   tableTeamHeader: {
-    flex: 5
+    flex: 5,
   },
   tableTeamLogo: {
     height: 20,
-    width: 20
+    width: 20,
   },
   tableTeamColumn: {
     flex: 4.2,
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8
+    gap: 8,
   },
   smallTableColumn: {
     flex: 1,
@@ -53,5 +45,5 @@ export const standingsTableStyles = StyleSheet.create({
   smallTableColumnCentered: {
     flex: 1,
     justifyContent: 'center',
-  }
+  },
 });

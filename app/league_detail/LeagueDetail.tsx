@@ -8,20 +8,14 @@ import {
   API_BASE_URL,
   API_KEY_HEADER,
   LEAGUES_PATH,
-  STANDINGS_PATH,
 } from '../constants/Constants';
 import LoadingSpinner from '../reusable_components/LoadingSpinner';
 import LeagueHeader from './LeagueHeader';
 import { leagueDetailStyles } from '../styles/LeagueDetailStyles';
-import {
-  ApiResponse,
-  LeagueDetails,
-  Season,
-  SeasonDetails,
-} from '../models';
+import { ApiResponse, LeagueDetails, Season, SeasonDetails } from '../models';
 import { Dropdown } from 'react-native-element-dropdown';
 import { LeagueDetailsJSON } from '../models/LeagueDetails';
-import { SegmentedButtons, ToggleButton } from 'react-native-paper';
+import { SegmentedButtons } from 'react-native-paper';
 import StandingsContainer from './standings/StandingsContainer';
 import TopscorersContainer from './topscorers/TopscorersContainer';
 
@@ -32,7 +26,9 @@ export default function LeagueDetail({ route }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [leagueDetails, setLeagueDetails] = useState<LeagueDetails>();
-  const [selectedSeasonDetails, setSelectedSeasonDetails] = useState(SeasonDetails.table);
+  const [selectedSeasonDetails, setSelectedSeasonDetails] = useState(
+    SeasonDetails.table
+  );
   const [selectedSeason, setSelectedSeason] = useState<Season | undefined>();
 
   useEffect(() => {
@@ -110,26 +106,30 @@ export default function LeagueDetail({ route }: Props) {
           <SegmentedButtons
             style={leagueDetailStyles.segmentedButtons}
             value={selectedSeasonDetails}
-            onValueChange={(selected) => setSelectedSeasonDetails(selected as SeasonDetails)}
+            onValueChange={(selected) =>
+              setSelectedSeasonDetails(selected as SeasonDetails)
+            }
             buttons={[
               {
                 value: SeasonDetails.table,
                 label: SeasonDetails.table,
                 checkedColor: '#190D3B',
-                uncheckedColor: '#FFFFFF'
+                uncheckedColor: '#FFFFFF',
               },
               {
                 value: SeasonDetails.topscorers,
                 label: SeasonDetails.topscorers,
                 checkedColor: '#190D3B',
-                uncheckedColor: '#FFFFFF'
-              }
+                uncheckedColor: '#FFFFFF',
+              },
             ]}
           />
         </View>
       )}
       {hasError && (
-        <Text style={[sharedStyles.defaultText, sharedStyles.errorText]}>Something went wrong, please try again later</Text>
+        <Text style={[sharedStyles.defaultText, sharedStyles.errorText]}>
+          Something went wrong, please try again later
+        </Text>
       )}
       <StandingsContainer
         leagueId={leagueDetails?.league.id}
@@ -137,9 +137,9 @@ export default function LeagueDetail({ route }: Props) {
         isVisible={selectedSeasonDetails === SeasonDetails.table}
       />
       <TopscorersContainer
-      leagueId={leagueDetails?.league.id}
-      year={selectedSeason?.year}
-      isVisible={selectedSeasonDetails === SeasonDetails.topscorers}
+        leagueId={leagueDetails?.league.id}
+        year={selectedSeason?.year}
+        isVisible={selectedSeasonDetails === SeasonDetails.topscorers}
       />
     </View>
   );

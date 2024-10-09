@@ -1,13 +1,6 @@
 import { StyleSheet } from 'react-native';
 
 export const sharedStyles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#190D3B',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 20,
-  },
   loadingSpinner: {
     backgroundColor: '#190D3B',
     marginTop: 20,
@@ -23,5 +16,5 @@ export const sharedStyles = StyleSheet.create({
   },
   errorText: {
     marginTop: 20,
-  }
+  },
 });
