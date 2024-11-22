@@ -2,17 +2,12 @@ import { useEffect, useState } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../App';
 import { League } from '../models';
-import {
-  LeafletView,
-  MapMarker,
-  WebViewLeafletEvents,
-  WebviewLeafletMessage,
-} from 'react-native-leaflet-view';
+import LeaguesOverviewPlatformView from './LeaguesOverviewPlatformView';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'LeaguesOverview'>;
 
 export default function LeaguesOverview({ navigation }: Props) {
-  const [leagues, setLeagues] = useState<League[]>();
+  const [leagues, setLeagues] = useState<League[]>([]);
 
   useEffect(() => {
     fetchLeagues();
@@ -26,29 +21,11 @@ export default function LeaguesOverview({ navigation }: Props) {
   };
 
   return (
-    <LeafletView
-      zoom={2}
-      mapMarkers={getMapMarkers()}
-      onMessageReceived={onMapMessageReceived}
+    <LeaguesOverviewPlatformView
+      leagues={leagues}
+      goToLeagueDetailView={goToLeagueDetail}
     />
   );
-
-  function getMapMarkers(): MapMarker[] {
-    const mapMarkers: MapMarker[] =
-      leagues?.map((league) => ({
-        id: league.name,
-        position: league.position,
-        icon: '⚽️',
-      })) ?? [];
-
-    return mapMarkers;
-  }
-
-  function onMapMessageReceived(message: WebviewLeafletMessage) {
-    if (message.event === WebViewLeafletEvents.ON_MAP_MARKER_CLICKED) {
-      goToLeagueDetail(message.payload?.mapMarkerID ?? '');
-    }
-  }
 
   function goToLeagueDetail(name: string) {
     navigation.navigate('LeagueDetail', { leagueName: name });
